@@ -2,7 +2,7 @@ const { Given, When, Then, And } = require('@wdio/cucumber-framework');
 
 const LoginPage = require('../pageobjects/login.page.js');
 const HomePage = require('../pageobjects/home.page.js');
-const ProductPage = require('../pageobjects/product.page.js');
+const CartPage = require('../pageobjects/cart.page.js');
 
 Given(/^Salma is on the login page$/, async () => {
     await LoginPage.open();
@@ -20,18 +20,10 @@ Then(/^Salma should see error "(.*)"$/, async (message) => {
     await LoginPage.validateLockedOutUserError(message);
 });
 
-And(/^Salma login with "(.*)" credential$/, async (username) => {
-    await LoginPage.login(username);
+When(/^Salma click on icon chart$/, async () => {
+    await HomePage.cart();
 });
 
-And(/^Salma should see home page$/, async () => {
-    await HomePage.validateHomePage();
-});
-
-When(/^Salma click a product$/, async () => {
-    await HomePage.clickProduct();
-});
-
-Then(/^Salma should see the product detail$/, async (message) => {
-    await ProductPage.validateProductDetail() 
+Then(/^Salma should see cart page$/, async () => {
+    await CartPage.validateCartPage();
 });

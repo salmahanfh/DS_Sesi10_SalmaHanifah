@@ -2,7 +2,6 @@ const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
 class LoginPage extends Page {
-    //Username () {return $('#username');}
 
     get fieldUsername () {return $('#user-name');}
     get fieldPassword () {return $('#password');}
